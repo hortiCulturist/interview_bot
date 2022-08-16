@@ -1,0 +1,15 @@
+[Unit]
+Description=interview_bot
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/interview_bot/
+ExecStart=/home/interview_bot/env/bin/python3 bot.py
+RestartSec=1
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
