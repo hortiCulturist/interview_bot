@@ -50,8 +50,10 @@ async def strt(message: types.Message):
         db.db_add(message.from_user.id, message.from_user.first_name, message.from_user.username)
     except IntegrityError:
         pass
-    await bot.send_message(message.from_user.id, text="Добро пожаловать!\n"
-                                                      "*** Описание ***\n", reply_markup=button.interview())
+    await bot.send_message(message.from_user.id, text="Ласкаво просимо!\n"
+                                                      "Цей бот допоможе вам зрозуміти наскільки ви обізнані "
+                                                      "у темі годування груддю, пройдіть опитування та дізнаєтеся "
+                                                      "свій рівень знань у цій темі\n", reply_markup=button.interview())
 
 
 @dp.message_handler(commands='send', state=None)
@@ -59,7 +61,7 @@ async def snd(message: types.Message):
 
 
     if message.from_user.id not in config.ADMIN_ID:
-        await bot.send_message(message.from_user.id, text="В ДОСТУПЕ ОТКАЗАНО!")
+        await bot.send_message(message.from_user.id, text="В ДОСТУПІ ВІДМОВЛЕНО!")
     else:
         await bot.send_message(message.from_user.id, text=f"Напишите и отправьте сообщение для "
                                                           f"рассылки оно будет отправлено {len(db.all_user())} пользователям")
@@ -90,7 +92,7 @@ async def send(message: types.Message, state: FSMContext):
 # 1 ВОПРОС
 
 @dp.callback_query_handler(text='start_again', state=None)
-@dp.message_handler(text_startswith='Начать опрос', state=None)
+@dp.message_handler(text_startswith='Почати опитування', state=None)
 async def question_1(message: types.Message):
     #    await db.start_num_db()
     #    await db.add_pnt(message.from_user.id)
