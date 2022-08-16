@@ -7,21 +7,30 @@ def interview():
     return m
 
 
+def cancel():
+    m = ReplyKeyboardMarkup(resize_keyboard=True)
+    m.add(KeyboardButton('ОТМЕНА'))
+    return m
+
+
 def yes_no():
     m = InlineKeyboardMarkup(resize_keyboard=True)
     m.insert(InlineKeyboardButton('✅ Так', callback_data='yes_yes'))
     m.insert(InlineKeyboardButton('❌ Нi', callback_data='nope'))
     return m
 
+
 def next():
     m = InlineKeyboardMarkup(resize_keyboard=True)
     m.insert(InlineKeyboardButton('Наступне питання', callback_data='nxt'))
     return m
 
+
 def end():
     m = InlineKeyboardMarkup(resize_keyboard=True)
     m.insert(InlineKeyboardButton('Закінчити опитування', callback_data='endd'))
     return m
+
 
 def axxe(count, message):
     m = InlineKeyboardMarkup(resize_keyboard=True)

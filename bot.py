@@ -55,6 +55,9 @@ async def strt(message: types.Message):
                                                       "у темі годування груддю, пройдіть опитування та дізнаєтеся "
                                                       "свій рівень знань у цій темі\n", reply_markup=button.interview())
 
+@dp.message_handler(commands="users")
+async def usrs(message: types.Message):
+    await bot.send_message(message.from_user.id, text=f"Пользователей в базе данных: {len(db.all_user())}")
 
 @dp.message_handler(commands='send', state=None)
 async def snd(message: types.Message):
@@ -64,10 +67,14 @@ async def snd(message: types.Message):
         await bot.send_message(message.from_user.id, text="В ДОСТУПІ ВІДМОВЛЕНО!")
     else:
         await bot.send_message(message.from_user.id, text=f"Напишите и отправьте сообщение для "
-                                                          f"рассылки оно будет отправлено {len(db.all_user())} пользователям")
+                                                          f"рассылки оно будет отправлено {len(db.all_user())} "
+                                                          f"пользователям", reply_markup=button.cancel())
         await MassSend.sendd.set()
 
-
+@dp.message_handler(text='ОТМЕНА',state=MassSend.sendd)
+async def cncl(message: types.Message, state: FSMContext):
+    await state.finish()
+    await bot.send_message(message.from_user.id, 'Рассылка отменена', reply_markup=ReplyKeyboardRemove())
 
 @dp.message_handler(content_types=aiogram.types.ContentType.ANY,
                     state=MassSend.sendd)
