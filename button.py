@@ -22,7 +22,7 @@ def yes_no():
 
 def next():
     m = InlineKeyboardMarkup(resize_keyboard=True)
-    m.insert(InlineKeyboardButton('Наступне питання', callback_data='nxt'))
+    m.insert(InlineKeyboardButton('Розвінчати міф', callback_data='nxt'))
     return m
 
 
@@ -36,6 +36,6 @@ def axxe(count, message):
     m = InlineKeyboardMarkup(resize_keyboard=True)
     m.add(InlineKeyboardButton('Надіслати другу', switch_inline_query=f'- бот у якому я пройшла опитування.\n'
                                                                       f'Mій результат - {count} балів(-и)!!\n\n{message}\n\n'))
-    m.add(InlineKeyboardButton('Дізнатися більше', url='https://tabletki.ua/%D0%9C%D0%B0%D0%BC%D0%BE%D0%BB%D0%B0%D0%BA%D1%82/1047747/'))
+    m.add(InlineKeyboardButton('Дізнатися більше', url='https://compendium.com.ua/dec/545877/'))
     m.add(InlineKeyboardButton('Пройти опитування знову', callback_data='start_again'))
     return m

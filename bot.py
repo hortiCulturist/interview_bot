@@ -119,7 +119,7 @@ async def question_1(call: types.CallbackQuery):
     await bot.send_message(call.from_user.id, text=f'Це неправда!\n'
                                                    f'ГВ можна налаштувати не лише після кесаревого розтину, '
                                                    f'але й у тому випадку, коли жінка не народжувала дитину, а, '
-                                                   f'наприклад, стала його прийомною чи второю мамою. '
+                                                   f'наприклад, стала його прийомною чи другою мамою. '
                                                    f'Явище має назву індукована лактація.\n'
                                                    f'ЇЇ можна налаштувати, якщо дотримуватись певної схеми дій.',
                            reply_markup=button.next())
@@ -134,7 +134,7 @@ async def question_1(call: types.CallbackQuery, state: FSMContext):
                                                    f'Індукована лактація можлива у самих різних випадках та '
                                                    f'дозволяє жінці вигодувати свою дитину, навіть не народжуючи його.\n'
                                                    f'Кажуть, Кім Кардашьян годувала груддю свою третю дитину, '
-                                                   f'якого їй народила сурогатна мати.',
+                                                   f'яку їй народила сурогатна мати.',
                            reply_markup=button.next())
     await call.answer()
 
@@ -282,8 +282,9 @@ async def question_5(call: types.CallbackQuery, state: FSMContext):
                                                    f'які не тільки підтримують лактацію, а й мають ще багато ефектів, '
                                                    f'які допомагають саме мамі:\n'
                                                    f'- додають сили та витривалості\n'
-                                                   f'- заспокоюють,покращують сон\n'
-                                                   f'- щоб можна було виспатися навіть з '
+                                                   f'- заспокоюють\n'
+                                                   f'- покращують сон\n'
+                                                   f'- покращують сон, щоб можна було виспатися навіть з '
                                                    f'частими перервами на годування\n'
                                                    f'- пришвидшують схуднення після пологів\n'
                                                    f'- зміцнюють імунітет\n'
@@ -368,7 +369,7 @@ async def question_7(call: types.CallbackQuery):
                                                    f'якщо ви відчуваєте нагрівання та дискомфорт, '
                                                    f'в усіх інших випадках цього робити не слід '
                                                    f'(надмірні зусилля з видалення молока, що залишилось у грудях, '
-                                                   f'може призвести до лактостазів).',
+                                                   f'можуть призвести до лактостазів).',
                            reply_markup=button.next())
 
 
@@ -534,7 +535,7 @@ async def question_11(call: types.CallbackQuery, state: FSMContext):
         data['points'] = data.get('points', 0) + 1
     await call.answer()
     await bot.send_message(call.from_user.id, text=f'Правильно!\nЖодних дієт без причини не потрібно, '
-                                                   f'що б там не казали суворі тітоньки у пологових будинка на '
+                                                   f'що б там не казали суворі тітоньки у пологових будинках на '
                                                    f'пострадянському просторі. Тому що поняття «дієта матері, '
                                                    f'що годує» – оксюморон, який існує тільки на тому самому просторі.',
                            reply_markup=button.next())
@@ -629,19 +630,19 @@ async def back_end(call: types.CallbackQuery, state: FSMContext):
         await bot.send_photo(call.from_user.id,
                              photo=open(os.path.join(config.path_photo, 'image_2022-08-16_14-26-03.png'), 'rb'),
                              caption=f"{config.minimum}\n"
-                                     f"Ваши баллы: {counter}\n",
+                                     f"Ваші бали: {counter}\n",
                              reply_markup=button.axxe(counter, config.minimum))
     elif counter >= 5 and counter <= 9:
         await bot.send_photo(call.from_user.id,
                              photo=open(os.path.join(config.path_photo, 'image_2022-08-16_14-26-31.png'), 'rb'),
                              caption=f"{config.medium}\n"
-                                     f"Ваши баллы: {counter}\n",
+                                     f"Ваші бали: {counter}\n",
                              reply_markup=button.axxe(counter, config.medium))
     else:
         await bot.send_photo(call.from_user.id,
                              photo=open(os.path.join(config.path_photo, 'image_2022-08-16_14-26-39.png'), 'rb'),
                              caption=f"{config.maximum}\n"
-                                     f"Ваши баллы: {counter}\n",
+                                     f"Ваші бали: {counter}\n",
                              reply_markup=button.axxe(counter, config.maximum))
     await state.finish()
 
