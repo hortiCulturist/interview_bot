@@ -274,9 +274,7 @@ async def question_5(call: types.CallbackQuery):
 
 
 @dp.callback_query_handler(text='yes_yes', state=quest.q5)
-async def question_5(call: types.CallbackQuery, state: FSMContext):
-    async with state.proxy() as data:
-        data['points'] = data.get('points', 0) + 1
+async def question_5(call: types.CallbackQuery):
     await call.answer()
     await bot.send_message(call.from_user.id, text=f'Це не так.\nНа щастя, є сучасні нутриціологічні продукти, '
                                                    f'які не тільки підтримують лактацію, а й мають ще багато ефектів, '
@@ -293,7 +291,9 @@ async def question_5(call: types.CallbackQuery, state: FSMContext):
 
 
 @dp.callback_query_handler(text='nope', state=quest.q5)
-async def question_5(call: types.CallbackQuery):
+async def question_5(call: types.CallbackQuery, state: FSMContext):
+    async with state.proxy() as data:
+        data['points'] = data.get('points', 0) + 1
     await call.answer()
     await bot.send_message(call.from_user.id, text=f'Правильно!\nМама – це жива людина, а не реактор.\n'
                                                    f'На щастя, є сучасні нутриціологічні продукти, які не тільки '
@@ -477,9 +477,7 @@ async def question_10(call: types.CallbackQuery):
 
 
 @dp.callback_query_handler(text='yes_yes', state=quest.q10)
-async def question_10(call: types.CallbackQuery, state: FSMContext):
-    async with state.proxy() as data:
-        data['points'] = data.get('points', 0) + 1
+async def question_10(call: types.CallbackQuery):
     await call.answer()
     await bot.send_message(call.from_user.id, text=f'Це не так.\nЗастарілі засоби для покращення лактації можуть '
                                                    f'містити в собі кмин (фенхель), який проникає у грудне молоко '
@@ -493,7 +491,9 @@ async def question_10(call: types.CallbackQuery, state: FSMContext):
 
 
 @dp.callback_query_handler(text='nope', state=quest.q10)
-async def question_10(call: types.CallbackQuery):
+async def question_10(call: types.CallbackQuery, state: FSMContext):
+    async with state.proxy() as data:
+        data['points'] = data.get('points', 0) + 1
     await call.answer()
     await bot.send_message(call.from_user.id, text=f'Правильно!\nПродукти з кмином (фенхель) заборонені для немовля '
                                                    f'та для годуючої мами, тому що викликають нервове збудження '
@@ -594,9 +594,7 @@ async def question_13(call: types.CallbackQuery):
 
 
 @dp.callback_query_handler(text='yes_yes', state=quest.q13)
-async def question_13(call: types.CallbackQuery, state: FSMContext):
-    async with state.proxy() as data:
-        data['points'] = data.get('points', 0) + 1
+async def question_13(call: types.CallbackQuery):
     await call.answer()
     await bot.send_message(call.from_user.id, text=f'Це не так.\nСучасні дієтичні добавки розроблені для підтримки '
                                                    f'грудного вигодовування. Існують спеціалізовані дієтичні добавки, '
@@ -606,7 +604,9 @@ async def question_13(call: types.CallbackQuery, state: FSMContext):
 
 
 @dp.callback_query_handler(text='nope', state=quest.q13)
-async def question_13(call: types.CallbackQuery):
+async def question_13(call: types.CallbackQuery, state: FSMContext):
+    async with state.proxy() as data:
+        data['points'] = data.get('points', 0) + 1
     await call.answer()
     await bot.send_message(call.from_user.id, text=f'Правильно!\nВи можете обрати найсучаснішу добавку до раціону мами, '
                                                    f'що годує. Ця добавка допоможе не тільки підтримувати лактацію та '
